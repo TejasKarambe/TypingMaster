@@ -1,0 +1,139 @@
+﻿src/app/router.tsx(3,10): error TS2614: Module '"@/features/dashboard/DashboardPage"' has no exported member 'DashboardPage'. Did you mean to use 'import DashboardPage from "@/features/dashboard/DashboardPage"' instead?
+src/data/lessons/curriculum.ts(548,3): error TS2741: Property 'category' is missing in type '{ id: string; number: number; title: string; description: string; lessons: ({ id: string; levelId: string; levelNumber: number; title: string; description: string; objective: string; instructions: string; ... 8 more ...; xpReward: number; } | { ...; })[]; }' but required in type 'LevelData'.
+src/data/lessons/curriculum.ts(665,3): error TS2741: Property 'category' is missing in type '{ id: string; number: number; title: string; description: string; lessons: ({ id: string; levelId: string; levelNumber: number; title: string; description: string; objective: string; instructions: string; ... 8 more ...; xpReward: number; } | { ...; })[]; }' but required in type 'LevelData'.
+src/data/lessons/curriculum.ts(814,9): error TS2322: Type '"numbers"' is not assignable to type 'LessonCategory'.
+src/data/lessons/curriculum.ts(832,9): error TS2322: Type '"numbers"' is not assignable to type 'LessonCategory'.
+src/data/lessons/curriculum.ts(850,9): error TS2322: Type '"numbers"' is not assignable to type 'LessonCategory'.
+src/data/lessons/curriculum.ts(868,9): error TS2322: Type '"numbers"' is not assignable to type 'LessonCategory'.
+src/data/lessons/curriculum.ts(886,9): error TS2322: Type '"symbols"' is not assignable to type 'LessonCategory'.
+src/data/lessons/curriculum.ts(904,9): error TS2322: Type '"numbers"' is not assignable to type 'LessonCategory'.
+src/data/lessons/curriculum.ts(931,9): error TS2322: Type '"fluency"' is not assignable to type 'LessonCategory'.
+src/data/lessons/curriculum.ts(950,9): error TS2322: Type '"fluency"' is not assignable to type 'LessonCategory'.
+src/data/lessons/curriculum.ts(969,9): error TS2322: Type '"fluency"' is not assignable to type 'LessonCategory'.
+src/data/lessons/curriculum.ts(988,9): error TS2322: Type '"fluency"' is not assignable to type 'LessonCategory'.
+src/data/lessons/curriculum.ts(1007,9): error TS2322: Type '"fluency"' is not assignable to type 'LessonCategory'.
+src/data/lessons/curriculum.ts(1026,9): error TS2322: Type '"fluency"' is not assignable to type 'LessonCategory'.
+src/data/lessons/curriculum.ts(1039,3): error TS2741: Property 'category' is missing in type '{ id: string; number: number; title: string; description: string; lessons: { id: string; levelId: string; levelNumber: number; title: string; description: string; objective: string; instructions: string; ... 9 more ...; xpReward: number; }[]; }' but required in type 'LevelData'.
+src/data/lessons/curriculum.ts(1161,3): error TS2741: Property 'category' is missing in type '{ id: string; number: number; title: string; description: string; lessons: { id: string; levelId: string; levelNumber: number; title: string; description: string; objective: string; instructions: string; ... 9 more ...; xpReward: number; }[]; }' but required in type 'LevelData'.
+src/features/achievements/AchievementsPage.tsx(5,50): error TS2307: Cannot find module '@/types/achievement' or its corresponding type declarations.
+src/features/achievements/AchievementsPage.tsx(44,79): error TS2464: A computed property name must be of type 'string', 'number', 'symbol', or 'any'.
+src/features/achievements/AchievementsPage.tsx(60,48): error TS2345: Argument of type '{ id: any; unlockedAt: string; }' is not assignable to parameter of type 'AchievementRecord'.
+  Property 'achievementId' is missing in type '{ id: any; unlockedAt: string; }' but required in type 'AchievementRecord'.
+src/features/analytics/AnalyticsPage.tsx(32,64): error TS2339: Property 'date' does not exist on type 'TypingResult'.
+src/features/analytics/AnalyticsPage.tsx(41,66): error TS2551: Property 'duration' does not exist on type 'TypingResult'. Did you mean 'durationMs'?
+src/features/analytics/AnalyticsPage.tsx(48,78): error TS2339: Property 'date' does not exist on type 'TypingResult'.
+src/features/analytics/AnalyticsPage.tsx(48,107): error TS2339: Property 'date' does not exist on type 'TypingResult'.
+src/features/analytics/AnalyticsPage.tsx(49,30): error TS2339: Property 'date' does not exist on type 'TypingResult'.
+src/features/analytics/AnalyticsPage.tsx(73,35): error TS2339: Property 'date' does not exist on type 'DailyActivity'.
+src/features/analytics/AnalyticsPage.tsx(74,38): error TS2339: Property 'date' does not exist on type 'DailyActivity'.
+src/features/analytics/AnalyticsPage.tsx(74,67): error TS2339: Property 'date' does not exist on type 'DailyActivity'.
+src/features/analytics/AnalyticsPage.tsx(76,30): error TS2339: Property 'date' does not exist on type 'DailyActivity'.
+src/features/analytics/AnalyticsPage.tsx(77,35): error TS2339: Property 'practiceTime' does not exist on type 'DailyActivity'.
+src/features/dashboard/DashboardPage.tsx(64,40): error TS2551: Property 'duration' does not exist on type 'TypingResult'. Did you mean 'durationMs'?
+src/features/dashboard/DashboardPage.tsx(65,30): error TS2339: Property 'xp' does not exist on type 'TypingResult'.
+src/features/dashboard/DashboardPage.tsx(83,44): error TS2339: Property 'date' does not exist on type 'DailyActivity'.
+src/features/dashboard/DashboardPage.tsx(84,26): error TS2339: Property 'practiceTime' does not exist on type 'DailyActivity'.
+src/features/dashboard/DashboardPage.tsx(106,53): error TS2339: Property 'timestamp' does not exist on type 'TypingResult'.
+src/features/dashboard/DashboardPage.tsx(106,67): error TS2339: Property 'timestamp' does not exist on type 'TypingResult'.
+src/features/dashboard/DashboardPage.tsx(119,47): error TS2339: Property 'date' does not exist on type 'DailyActivity'.
+src/features/dashboard/DashboardPage.tsx(122,49): error TS2339: Property 'practiceTime' does not exist on type 'DailyActivity'.
+src/features/dashboard/DashboardPage.tsx(128,52): error TS2339: Property 'date' does not exist on type 'DailyActivity'.
+src/features/dashboard/DashboardPage.tsx(129,60): error TS2339: Property 'practiceTime' does not exist on type 'DailyActivity'.
+src/features/dashboard/DashboardPage.tsx(234,25): error TS2322: Type '{ hidden: { opacity: number; y: number; }; show: { opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }; }' is not assignable to type 'Variants'.
+  Property 'show' is incompatible with index signature.
+    Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'type' are incompatible.
+                    Type 'string' is not assignable to type 'AnimationGeneratorType | undefined'.
+src/features/dashboard/DashboardPage.tsx(253,25): error TS2322: Type '{ hidden: { opacity: number; y: number; }; show: { opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }; }' is not assignable to type 'Variants'.
+  Property 'show' is incompatible with index signature.
+    Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'type' are incompatible.
+                    Type 'string' is not assignable to type 'AnimationGeneratorType | undefined'.
+src/features/dashboard/DashboardPage.tsx(283,25): error TS2322: Type '{ hidden: { opacity: number; y: number; }; show: { opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }; }' is not assignable to type 'Variants'.
+  Property 'show' is incompatible with index signature.
+    Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'type' are incompatible.
+                    Type 'string' is not assignable to type 'AnimationGeneratorType | undefined'.
+src/features/dashboard/DashboardPage.tsx(304,25): error TS2322: Type '{ hidden: { opacity: number; y: number; }; show: { opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }; }' is not assignable to type 'Variants'.
+  Property 'show' is incompatible with index signature.
+    Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'Variant'.
+      Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type 'TargetAndTransition'.
+        Type '{ opacity: number; y: number; transition: { type: string; stiffness: number; damping: number; }; }' is not assignable to type '{ transition?: Transition<any> | undefined; transitionEnd?: ResolvedValues$1 | undefined; }'.
+          Types of property 'transition' are incompatible.
+            Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'Transition<any> | undefined'.
+              Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+                Type '{ type: string; stiffness: number; damping: number; }' is not assignable to type 'ValueAnimationTransition<any>'.
+                  Types of property 'type' are incompatible.
+                    Type 'string' is not assignable to type 'AnimationGeneratorType | undefined'.
+src/features/games/GamePlayPage.tsx(30,22): error TS2554: Expected 1 arguments, but got 0.
+src/features/games/GamePlayPage.tsx(69,31): error TS2345: Argument of type '{ gameId: string; score: number; level: number; wpm: number; accuracy: number; duration: number; date: string; }' is not assignable to parameter of type 'GameRecord'.
+  Type '{ gameId: string; score: number; level: number; wpm: number; accuracy: number; duration: number; date: string; }' is missing the following properties from type 'GameRecord': startedAt, completedAt, durationMs, difficulty, configSnapshot
+src/features/games/GamePlayPage.tsx(72,47): error TS2339: Property 'getById' does not exist on type '{ getOrCreate(dateKey: string): Promise<DailyActivity>; update(activity: DailyActivity): Promise<void>; getRange(startDate: string, endDate: string): Promise<...>; getAll(): Promise<...>; getCurrentStreak(): Promise<...>; deleteAll(): Promise<...>; }'.
+src/features/games/GamePlayPage.tsx(76,32): error TS2339: Property 'save' does not exist on type '{ getOrCreate(dateKey: string): Promise<DailyActivity>; update(activity: DailyActivity): Promise<void>; getRange(startDate: string, endDate: string): Promise<...>; getAll(): Promise<...>; getCurrentStreak(): Promise<...>; deleteAll(): Promise<...>; }'.
+src/features/games/GamePlayPage.tsx(78,32): error TS2339: Property 'save' does not exist on type '{ getOrCreate(dateKey: string): Promise<DailyActivity>; update(activity: DailyActivity): Promise<void>; getRange(startDate: string, endDate: string): Promise<...>; getAll(): Promise<...>; getCurrentStreak(): Promise<...>; deleteAll(): Promise<...>; }'.
+src/features/games/GamesPage.tsx(7,28): error TS2307: Cannot find module '@/types/game' or its corresponding type declarations.
+src/features/history/HistoryDetailPage.tsx(7,29): error TS2307: Cannot find module '@/types/session' or its corresponding type declarations.
+src/features/history/HistoryDetailPage.tsx(49,44): error TS7006: Parameter 'wpm' implicitly has an 'any' type.
+src/features/history/HistoryDetailPage.tsx(49,49): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/features/history/HistoryDetailPage.tsx(144,33): error TS2571: Object is of type 'unknown'.
+src/features/history/HistoryDetailPage.tsx(144,40): error TS2571: Object is of type 'unknown'.
+src/features/history/HistoryDetailPage.tsx(148,60): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
+src/features/history/HistoryPage.tsx(6,29): error TS2307: Cannot find module '@/types/session' or its corresponding type declarations.
+src/features/history/HistoryPage.tsx(17,50): error TS2339: Property 'date' does not exist on type 'TypingResult'.
+src/features/history/HistoryPage.tsx(17,79): error TS2339: Property 'date' does not exist on type 'TypingResult'.
+src/features/lessons/LessonDetailPage.tsx(7,32): error TS2307: Cannot find module '@/types/lesson' or its corresponding type declarations.
+src/features/lessons/LessonDetailPage.tsx(8,33): error TS2307: Cannot find module '@/features/typing/hooks/useTypingEngine' or its corresponding type declarations.
+src/features/lessons/LessonDetailPage.tsx(10,31): error TS2307: Cannot find module '@/features/typing/components/TypingDisplay' or its corresponding type declarations.
+src/features/lessons/LessonDetailPage.tsx(11,27): error TS2307: Cannot find module '@/features/typing/components/LiveStats' or its corresponding type declarations.
+src/features/lessons/LessonDetailPage.tsx(64,47): error TS2339: Property 'getById' does not exist on type '{ getOrCreate(dateKey: string): Promise<DailyActivity>; update(activity: DailyActivity): Promise<void>; getRange(startDate: string, endDate: string): Promise<...>; getAll(): Promise<...>; getCurrentStreak(): Promise<...>; deleteAll(): Promise<...>; }'.
+src/features/lessons/LessonDetailPage.tsx(68,32): error TS2339: Property 'save' does not exist on type '{ getOrCreate(dateKey: string): Promise<DailyActivity>; update(activity: DailyActivity): Promise<void>; getRange(startDate: string, endDate: string): Promise<...>; getAll(): Promise<...>; getCurrentStreak(): Promise<...>; deleteAll(): Promise<...>; }'.
+src/features/lessons/LessonDetailPage.tsx(70,32): error TS2339: Property 'save' does not exist on type '{ getOrCreate(dateKey: string): Promise<DailyActivity>; update(activity: DailyActivity): Promise<void>; getRange(startDate: string, endDate: string): Promise<...>; getAll(): Promise<...>; getCurrentStreak(): Promise<...>; deleteAll(): Promise<...>; }'.
+src/features/lessons/LessonsPage.tsx(7,32): error TS2307: Cannot find module '@/types/lesson' or its corresponding type declarations.
+src/features/settings/SettingsPage.tsx(4,76): error TS2307: Cannot find module '@/app/store/slices/settingsSlice' or its corresponding type declarations.
+src/features/settings/SettingsPage.tsx(63,33): error TS2339: Property 'clear' does not exist on type '{ save(result: TypingResult): Promise<void>; getById(sessionId: string): Promise<TypingResult | null>; getAll(options?: { limit?: number | undefined; ... 5 more ...; sortDir?: "asc" | ... 1 more ... | undefined; } | undefined): Promise<...>; ... 4 more ...; getRecentSessions(limit?: number): Promise<...>; }'.
+src/features/settings/SettingsPage.tsx(64,34): error TS2339: Property 'clear' does not exist on type '{ getOrCreate(dateKey: string): Promise<DailyActivity>; update(activity: DailyActivity): Promise<void>; getRange(startDate: string, endDate: string): Promise<...>; getAll(): Promise<...>; getCurrentStreak(): Promise<...>; deleteAll(): Promise<...>; }'.
+src/features/settings/SettingsPage.tsx(65,30): error TS2339: Property 'clear' does not exist on type '{ save(record: GameRecord): Promise<void>; getByGameId(gameId: string, limit?: number | undefined): Promise<GameRecord[]>; getAll(): Promise<...>; getHighScore(gameId: string): Promise<...>; getCount(): Promise<...>; deleteAll(): Promise<...>; }'.
+src/features/settings/SettingsPage.tsx(66,32): error TS2339: Property 'clear' does not exist on type '{ get(lessonId: string): Promise<LessonProgress | null>; save(progress: LessonProgress): Promise<void>; getAll(): Promise<...>; getCompletedCount(): Promise<...>; resetAll(): Promise<...>; }'.
+src/features/settings/SettingsPage.tsx(67,37): error TS2339: Property 'clear' does not exist on type '{ save(record: AchievementRecord): Promise<void>; getAll(): Promise<AchievementRecord[]>; isUnlocked(achievementId: string): Promise<...>; getCount(): Promise<...>; deleteAll(): Promise<...>; }'.
+src/features/settings/SettingsPage.tsx(118,33): error TS2339: Property 'typing' does not exist on type 'SettingsState'.
+src/features/settings/SettingsPage.tsx(136,42): error TS2339: Property 'typing' does not exist on type 'SettingsState'.
+src/features/settings/SettingsPage.tsx(139,59): error TS2339: Property 'typing' does not exist on type 'SettingsState'.
+src/features/settings/SettingsPage.tsx(150,37): error TS2339: Property 'typing' does not exist on type 'SettingsState'.
+src/features/settings/SettingsPage.tsx(165,37): error TS2339: Property 'typing' does not exist on type 'SettingsState'.
+src/features/settings/SettingsPage.tsx(186,33): error TS2339: Property 'appearance' does not exist on type 'SettingsState'.
+src/features/settings/SettingsPage.tsx(209,37): error TS2339: Property 'sound' does not exist on type 'SettingsState'.
+src/features/settings/SettingsPage.tsx(224,37): error TS2339: Property 'sound' does not exist on type 'SettingsState'.
+src/features/settings/SettingsPage.tsx(236,68): error TS2339: Property 'sound' does not exist on type 'SettingsState'.
+src/features/settings/SettingsPage.tsx(252,33): error TS2339: Property 'general' does not exist on type 'SettingsState'.
+src/features/themes/ThemesPage.tsx(6,34): error TS2307: Cannot find module '@/app/store/slices/settingsSlice' or its corresponding type declarations.
+src/features/themes/ThemesPage.tsx(11,65): error TS2339: Property 'appearance' does not exist on type 'SettingsState'.
+src/features/themes/ThemesPage.tsx(62,49): error TS2339: Property 'colors' does not exist on type 'ThemeDefinition'.
+src/features/themes/ThemesPage.tsx(73,53): error TS2339: Property 'colors' does not exist on type 'ThemeDefinition'.
+src/features/themes/ThemesPage.tsx(77,53): error TS2339: Property 'colors' does not exist on type 'ThemeDefinition'.
+src/features/themes/ThemesPage.tsx(82,55): error TS2339: Property 'colors' does not exist on type 'ThemeDefinition'.
+src/features/themes/ThemesPage.tsx(86,55): error TS2339: Property 'colors' does not exist on type 'ThemeDefinition'.
+src/features/themes/ThemesPage.tsx(95,69): error TS2339: Property 'type' does not exist on type 'ThemeDefinition'.
+src/features/themes/ThemesPage.tsx(98,89): error TS2339: Property 'colors' does not exist on type 'ThemeDefinition'.
+src/features/themes/ThemesPage.tsx(99,89): error TS2339: Property 'colors' does not exist on type 'ThemeDefinition'.
+src/features/themes/ThemesPage.tsx(100,89): error TS2339: Property 'colors' does not exist on type 'ThemeDefinition'.
+vite.config.ts(38,3): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Object literal may only specify known properties, and 'test' does not exist in type 'UserConfigExport'.

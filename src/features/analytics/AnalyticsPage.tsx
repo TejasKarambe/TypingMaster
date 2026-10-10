@@ -29,26 +29,26 @@ export const AnalyticsPage: React.FC = () => {
         const now = new Date();
         const cutoff = new Date(now.setDate(now.getDate() - timeRange)).getTime();
         
-        const recentSessions = sessions.filter(s => new Date(s.date).getTime() > cutoff);
+        const recentSessions = sessions.filter(s => (s.startedAt || s.completedAt || 0) > cutoff);
         
         if (recentSessions.length > 0) {
           const totalWpm = recentSessions.reduce((acc, s) => acc + s.wpm, 0);
-          const totalAcc = recentSessions.reduce((acc, s) => acc + s.accuracy, 0);
+          const totalAcc = recentSessions.reduce((acc, s) => acc + (s.accuracy <= 1 ? s.accuracy * 100 : s.accuracy), 0);
           const bestWpm = Math.max(...recentSessions.map(s => s.wpm));
           
           setStats({
             totalTests: recentSessions.length,
-            totalTime: recentSessions.reduce((acc, s) => acc + s.duration, 0),
+            totalTime: Math.round(recentSessions.reduce((acc, s) => acc + (s.durationMs || 0), 0) / 1000),
             avgWpm: Math.round(totalWpm / recentSessions.length),
             bestWpm,
             avgAccuracy: Number((totalAcc / recentSessions.length).toFixed(1)),
           });
 
           // Process WPM Data for chart
-          const chartData = recentSessions.slice().sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()).map(s => ({
-            date: new Date(s.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }),
+          const chartData = recentSessions.slice().sort((a, b) => (a.startedAt || 0) - (b.startedAt || 0)).map(s => ({
+            date: new Date(s.startedAt || s.completedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }),
             wpm: s.wpm,
-            accuracy: s.accuracy
+            accuracy: Number((s.accuracy <= 1 ? s.accuracy * 100 : s.accuracy).toFixed(1))
           }));
           setWpmData(chartData);
 
@@ -57,7 +57,7 @@ export const AnalyticsPage: React.FC = () => {
           recentSessions.forEach(s => {
             if (s.errorMap) {
               Object.entries(s.errorMap).forEach(([char, count]) => {
-                mergedErrors[char] = (mergedErrors[char] || 0) + count;
+                mergedErrors[char] = (mergedErrors[char] || 0) + (count as number);
               });
             }
           });
@@ -70,11 +70,11 @@ export const AnalyticsPage: React.FC = () => {
 
         // Process Activity Data
         const recentActivity = activities
-          .filter(a => new Date(a.date).getTime() > cutoff)
-          .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+          .filter(a => new Date(a.dateKey).getTime() > cutoff)
+          .sort((a, b) => new Date(a.dateKey).getTime() - new Date(b.dateKey).getTime())
           .map(a => ({
-            date: new Date(a.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }),
-            minutes: Math.round(a.practiceTime / 60)
+            date: new Date(a.dateKey).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }),
+            minutes: Math.round(a.practiceDurationMs / 60000)
           }));
         setActivityData(recentActivity);
 

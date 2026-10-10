@@ -31,15 +31,14 @@ interface ActivityData {
   minutes: number;
 }
 
-export default function DashboardPage() {
+export function DashboardPage() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [recentSessions, setRecentSessions] = useState<ChartData[]>([]);
   const [weeklyActivity, setWeeklyActivity] = useState<ActivityData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [dailyProgress, setDailyProgress] = useState(0);
 
-  const settings = useAppSelector((state: any) => state.settings);
-  const dailyGoalMinutes = settings?.general?.dailyGoalMinutes || 15;
+  const dailyGoalMinutes = useAppSelector(state => state.settings.settings.general.dailyGoalMinutes) || 15;
 
   useEffect(() => {
     const loadDashboardData = async () => {
@@ -54,60 +53,47 @@ export default function DashboardPage() {
         let bestWpm = 0;
         let totalWpm = 0;
         let totalAccuracy = 0;
-        let totalPracticeTime = 0; 
+        let totalPracticeTimeMs = 0; 
         let totalXp = 0;
+
+        activity.forEach(a => {
+          totalXp += a.xpEarned || 0;
+        });
 
         allSessions.forEach(session => {
           if (session.wpm > bestWpm) bestWpm = session.wpm;
           totalWpm += session.wpm;
           totalAccuracy += session.accuracy;
-          totalPracticeTime += session.duration || 0;
-          totalXp += session.xp || 0;
+          totalPracticeTimeMs += session.durationMs || 0;
         });
 
         const avgWpm = totalTests > 0 ? Math.round(totalWpm / totalTests) : 0;
-        const avgAccuracy = totalTests > 0 ? Math.round(totalAccuracy / totalTests) : 0;
+        const avgAccuracy = totalTests > 0 ? Math.round((totalAccuracy / totalTests) * (totalAccuracy <= totalTests ? 100 : 1)) : 0;
         
         // Calculate level
         const xpPerLevel = XP_PER_LEVEL || 1000;
         const level = Math.floor(totalXp / xpPerLevel) + 1;
 
         // Current Streak
-        let currentStreak = 0;
-        const today = new Date();
-        const todayKey = getDateKey(today);
-        
-        let checkDate = new Date();
-        while (true) {
-          const key = getDateKey(checkDate);
-          const act = activity.find(a => a.date === key);
-          if (act && act.practiceTime > 0) {
-            currentStreak++;
-            checkDate.setDate(checkDate.getDate() - 1);
-          } else if (key === todayKey) {
-             checkDate.setDate(checkDate.getDate() - 1);
-          } else {
-            break;
-          }
-        }
+        const currentStreak = await activityRepository.getCurrentStreak();
 
         setStats({
           bestWpm,
           avgWpm,
           avgAccuracy,
           totalTests,
-          practiceTime: totalPracticeTime,
+          practiceTime: Math.round(totalPracticeTimeMs / 1000),
           currentStreak,
           totalXp,
           level
         });
 
         // Recent Sessions for WPM chart
-        const recent = allSessions.sort((a, b) => b.timestamp - a.timestamp).slice(0, 10).reverse();
+        const recent = [...allSessions].sort((a, b) => b.startedAt - a.startedAt).slice(0, 10).reverse();
         setRecentSessions(recent.map((s, i) => ({
           name: `Test ${i + 1}`,
           wpm: Math.round(s.wpm),
-          accuracy: Math.round(s.accuracy)
+          accuracy: Math.round(s.accuracy <= 1 ? s.accuracy * 100 : s.accuracy)
         })));
 
         // Weekly activity
@@ -116,17 +102,18 @@ export default function DashboardPage() {
           const d = new Date();
           d.setDate(d.getDate() - i);
           const key = getDateKey(d);
-          const dayAct = activity.find(a => a.date === key);
+          const dayAct = activity.find(a => a.dateKey === key);
           weekActivityData.push({
             name: d.toLocaleDateString('en-US', { weekday: 'short' }),
-            minutes: dayAct ? Math.round(dayAct.practiceTime / 60) : 0
+            minutes: dayAct ? Math.round(dayAct.practiceDurationMs / 60000) : 0
           });
         }
         setWeeklyActivity(weekActivityData);
 
         // Daily Progress
-        const todayActivity = activity.find(a => a.date === todayKey);
-        const todayMinutes = todayActivity ? todayActivity.practiceTime / 60 : 0;
+        const todayKey = getDateKey();
+        const todayActivity = activity.find(a => a.dateKey === todayKey);
+        const todayMinutes = todayActivity ? todayActivity.practiceDurationMs / 60000 : 0;
         setDailyProgress(Math.min(100, Math.round((todayMinutes / dailyGoalMinutes) * 100)));
 
       } catch (error) {
@@ -149,7 +136,7 @@ export default function DashboardPage() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
+    show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 300, damping: 24 } }
   };
 
   if (isLoading) {

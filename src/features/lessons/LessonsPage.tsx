@@ -4,7 +4,7 @@ import { Lock, Star, ChevronDown, BookOpen, Check, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { levels } from '@/data/lessons/curriculum';
 import { lessonRepository } from '@/services/storage/repositories';
-import { LessonProgress } from '@/types/lesson';
+import { LessonProgress } from '@/types';
 import { cn } from '@/lib/utils';
 
 export const LessonsPage: React.FC = () => {

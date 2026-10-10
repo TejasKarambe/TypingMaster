@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Gamepad2, Trophy, Play } from 'lucide-react';
 import { gameMetadata } from '@/data/games/gameData';
 import { gameRepository } from '@/services/storage/repositories';
-import { GameResult } from '@/types/game';
+import { GameRecord } from '@/types';
 
 export const GamesPage: React.FC = () => {
   const [highScores, setHighScores] = useState<Record<string, number>>({});
@@ -16,7 +16,7 @@ export const GamesPage: React.FC = () => {
         const results = await gameRepository.getAll();
         const scores: Record<string, number> = {};
         
-        results.forEach((result: GameResult) => {
+        results.forEach((result: GameRecord) => {
           if (!scores[result.gameId] || result.score > scores[result.gameId]) {
             scores[result.gameId] = result.score;
           }

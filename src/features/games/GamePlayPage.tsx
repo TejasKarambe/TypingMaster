@@ -27,7 +27,7 @@ export const GamePlayPage: React.FC = () => {
   
   const [words, setWords] = useState<FallingWord[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
-  const requestRef = useRef<number>();
+  const requestRef = useRef<number | undefined>(undefined);
   const lastSpawnTime = useRef<number>(0);
   const wordIdCounter = useRef(0);
   const startTime = useRef(0);
@@ -53,36 +53,33 @@ export const GamePlayPage: React.FC = () => {
   };
 
   const saveGameResult = async () => {
-    const duration = (performance.now() - startTime.current) / 1000;
-    const wpm = (typedCount.current / 5) / (duration / 60);
+    const durationMs = Math.round(performance.now() - startTime.current);
+    const wpmVal = Math.round((typedCount.current / 5) / (durationMs / 60000)) || 0;
 
     const result = {
-      gameId: gameId || 'falling-words',
+      gameId: (gameId as any) || 'falling-words',
+      startedAt: Math.round(startTime.current),
+      completedAt: Date.now(),
       score,
       level,
-      wpm: isNaN(wpm) ? 0 : Math.round(wpm),
-      accuracy: 100, // simplified for now
-      duration: Math.round(duration),
-      date: new Date().toISOString()
+      wpm: isNaN(wpmVal) ? 0 : wpmVal,
+      accuracy: 1,
+      durationMs,
+      difficulty: 'medium' as const,
+      configSnapshot: {
+        gameId: (gameId as any) || 'falling-words',
+        difficulty: 'medium' as const
+      }
     };
     
     await gameRepository.save(result);
 
     const today = new Date().toISOString().split('T')[0];
-    const activity = await activityRepository.getById(today);
-    if (activity) {
-      activity.gamesPlayed += 1;
-      activity.practiceTime += Math.round(duration);
-      await activityRepository.save(activity);
-    } else {
-      await activityRepository.save({
-        date: today,
-        testsCompleted: 0,
-        lessonsCompleted: 0,
-        gamesPlayed: 1,
-        practiceTime: Math.round(duration)
-      });
-    }
+    const activity = await activityRepository.getOrCreate(today);
+    activity.gamesPlayed += 1;
+    activity.practiceDurationMs += durationMs;
+    activity.xpEarned += score;
+    await activityRepository.update(activity);
   };
 
   const spawnWord = useCallback((currentTime: number) => {

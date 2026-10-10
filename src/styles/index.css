@@ -79,7 +79,7 @@
   }
 
   .card-hover {
-    @apply card transition-all duration-200 hover:border-border-hover hover:bg-bg-hover;
+    @apply bg-bg-card border border-border rounded-xl p-6 transition-all duration-200 hover:border-border-hover hover:bg-bg-hover;
   }
 
   .btn-primary {
