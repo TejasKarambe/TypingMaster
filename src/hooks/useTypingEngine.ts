@@ -13,6 +13,7 @@ import {
 } from '@/engines/typing/typingEngine';
 import { generateText } from '@/engines/typing/textGenerator';
 import { useAppSelector } from '@/app/store/hooks';
+import { soundService } from '@/services/audio/soundService';
 
 interface UseTypingEngineOptions {
   testConfig: TestConfig;
@@ -25,6 +26,7 @@ interface UseTypingEngineOptions {
 export function useTypingEngine(options: UseTypingEngineOptions) {
   const { testConfig, customText, onComplete, previousBestWpm = 0, sessionType = 'test' } = options;
   const typingSettings = useAppSelector((s) => s.settings.settings.typing);
+  const soundSettings = useAppSelector((s) => s.settings.settings.sound);
 
   const [state, setState] = useState<TypingEngineState>(() => {
     const text = customText || generateText(testConfig);
@@ -97,9 +99,20 @@ export function useTypingEngine(options: UseTypingEngineOptions) {
     if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
       e.preventDefault();
       const now = performance.now();
+      const targetChar = stateRef.current.chars[stateRef.current.currentIndex]?.char;
+      const isCorrect = e.key === targetChar;
+
+      if (soundSettings.masterEnabled) {
+        if (!isCorrect && soundSettings.errorSound) {
+          soundService.playErrorSound(soundSettings.volume);
+        } else if (soundSettings.typingEnabled || soundSettings.correctSound) {
+          soundService.playKeySound(soundSettings.soundProfile, soundSettings.volume);
+        }
+      }
+
       setState((prev) => processCharInput(prev, e.key, now, typingSettings.backspaceEnabled));
     }
-  }, [typingSettings.backspaceEnabled]);
+  }, [typingSettings.backspaceEnabled, soundSettings]);
 
   const restart = useCallback((newText?: string) => {
     completedRef.current = false;

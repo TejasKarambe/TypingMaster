@@ -58,7 +58,7 @@ export const LessonsPage: React.FC = () => {
     <div className="max-w-4xl mx-auto p-6">
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2 flex items-center">
-          <BookOpen className="mr-3 text-primary" size={32} />
+          <BookOpen className="mr-3 text-accent" size={32} />
           Typing Curriculum
         </h1>
         <p className="text-text-secondary">
@@ -76,18 +76,18 @@ export const LessonsPage: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="card overflow-hidden"
+              className="card overflow-hidden p-0"
             >
               <div 
-                className="p-4 bg-surface-hover cursor-pointer flex justify-between items-center"
+                className="p-4 bg-bg-tertiary/50 hover:bg-bg-tertiary cursor-pointer flex justify-between items-center transition-colors"
                 onClick={() => toggleLevel(level.id)}
               >
                 <div>
-                  <h2 className="text-xl font-bold">{level.title}</h2>
+                  <h2 className="text-xl font-bold text-text-primary">{level.title}</h2>
                   <p className="text-sm text-text-secondary">{level.description}</p>
                 </div>
                 <ChevronDown 
-                  className={cn("transition-transform", isExpanded ? "rotate-180" : "")} 
+                  className={cn("transition-transform text-text-secondary", isExpanded ? "rotate-180" : "")} 
                 />
               </div>
 
@@ -103,19 +103,19 @@ export const LessonsPage: React.FC = () => {
                       <div 
                         key={lesson.id}
                         className={cn(
-                          "flex flex-col sm:flex-row items-center justify-between p-4 rounded-lg border",
-                          available ? "bg-surface border-border" : "bg-surface-muted border-border opacity-75"
+                          "flex flex-col sm:flex-row items-center justify-between p-4 rounded-lg border transition-colors",
+                          available ? "bg-bg-card border-border hover:border-border-hover" : "bg-bg-secondary/40 border-border opacity-60"
                         )}
                       >
                         <div className="flex-1 mb-4 sm:mb-0">
                           <div className="flex items-center mb-1">
                             {!available && <Lock className="text-text-muted mr-2" size={16} />}
-                            {completed && <Check className="text-green-500 mr-2" size={16} />}
-                            <h3 className="font-semibold text-lg">{lesson.title}</h3>
+                            {completed && <Check className="text-success mr-2" size={16} />}
+                            <h3 className="font-semibold text-lg text-text-primary">{lesson.title}</h3>
                           </div>
                           <p className="text-sm text-text-secondary mb-2">{lesson.description}</p>
                           <div className="flex items-center text-xs text-text-muted">
-                            <span className="mr-3">Target keys: <strong className="text-primary">{lesson.targetKeys.join(' ')}</strong></span>
+                            <span className="mr-3">Target keys: <strong className="text-accent uppercase font-mono">{lesson.targetKeys.join(' ')}</strong></span>
                           </div>
                         </div>
 
@@ -125,9 +125,9 @@ export const LessonsPage: React.FC = () => {
                               {[1, 2, 3].map((star) => (
                                 <Star 
                                   key={star} 
-                                  size={20} 
+                                  size={18} 
                                   className={cn(
-                                    star <= stars ? "text-yellow-400 fill-yellow-400" : "text-border"
+                                    star <= stars ? "text-warning fill-warning" : "text-border"
                                   )} 
                                 />
                               ))}
@@ -138,15 +138,15 @@ export const LessonsPage: React.FC = () => {
                             <Link 
                               to={`/lessons/${lesson.id}`}
                               className={cn(
-                                "btn", 
-                                completed ? "btn-secondary" : "btn-primary"
+                                "flex items-center gap-1.5 text-sm", 
+                                completed ? "btn-secondary py-2 px-4" : "btn-primary py-2 px-4"
                               )}
                             >
-                              <Play size={16} className="mr-2" />
+                              <Play size={14} />
                               {completed ? 'Review' : 'Start'}
                             </Link>
                           ) : (
-                            <button disabled className="btn bg-surface-muted text-text-muted cursor-not-allowed">
+                            <button disabled className="bg-bg-tertiary text-text-muted px-4 py-2 rounded-lg text-sm cursor-not-allowed">
                               Locked
                             </button>
                           )}

@@ -10,6 +10,7 @@ import { activityRepository } from '@/services/storage/repositories/activityRepo
 import { getDateKey, formatNumber } from '@/lib/utils';
 import { DURATION_PRESETS, WORD_COUNT_PRESETS } from '@/lib/constants';
 import type { TypingResult, TestMode, TestDifficulty } from '@/types';
+import { VirtualKeyboard } from '@/features/keyboard/VirtualKeyboard';
 import {
   Clock, Hash, Quote, FileText, RotateCcw,
   Type, Gauge, Settings2
@@ -275,6 +276,13 @@ export function TypingTestPage() {
                 currentIndex={engine.state.currentIndex}
                 isFocused={isFocused}
                 onFocus={engine.focus}
+              />
+            </div>
+
+            {/* Virtual Keyboard */}
+            <div className="mt-8">
+              <VirtualKeyboard
+                activeChar={engine.state.chars[engine.state.currentIndex]?.char}
               />
             </div>
 
