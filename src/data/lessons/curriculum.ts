@@ -6,6 +6,7 @@ export const levels: LevelData[] = [
     number: 1,
     title: 'Home Row Fundamentals',
     description: 'Master the middle row of the keyboard (A, S, D, F, J, K, L, ;)',
+    category: 'home-row',
     lessons: [
       {
         id: 'l1-1',
@@ -158,6 +159,7 @@ export const levels: LevelData[] = [
     id: 'level-2',
     number: 2,
     title: 'Upper Row',
+    category: 'upper-row',
     description: 'Learn the keys above the home row (Q, W, E, R, T, Y, U, I, O, P)',
     lessons: [
       {
@@ -293,6 +295,7 @@ export const levels: LevelData[] = [
     id: 'level-3',
     number: 3,
     title: 'Lower Row',
+    category: 'lower-row',
     description: 'Learn the keys below the home row (Z, X, C, V, B, N, M, ,, ., /)',
     lessons: [
       {
@@ -428,6 +431,7 @@ export const levels: LevelData[] = [
     id: 'level-4',
     number: 4,
     title: 'Common Words',
+    category: 'common-words',
     description: 'Master the most frequently used words in English to boost your WPM.',
     lessons: [
       {
