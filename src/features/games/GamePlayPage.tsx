@@ -9,6 +9,7 @@ import { WordInvadersGame } from './games/WordInvadersGame';
 import { AnagramRacerGame } from './games/AnagramRacerGame';
 import { WordChainGame } from './games/WordChainGame';
 import { SpeedSprintGame } from './games/SpeedSprintGame';
+import { PrecisionTrialGame } from './games/PrecisionTrialGame';
 
 export const GamePlayPage: React.FC = () => {
   const { gameId } = useParams<{ gameId: string }>();
