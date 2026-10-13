@@ -24,7 +24,7 @@ export const AnagramRacerGame: React.FC<AnagramRacerProps> = ({ onGameOver }) =>
   const startTime = useRef(0);
   const solvedCount = useRef(0);
 
-  const scramble = (str: string) => {
+  const scramble:any = (str: string) => {
     const arr = str.split('');
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
